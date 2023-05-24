@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
-from .forms import TodoForm
 from .models import Todo
+from .forms import TodoForm
 
 # Create your views here.
 def todo_list(request):
@@ -37,10 +37,10 @@ def todo_edit(request, pk):
 
 def done_list(request):
     dones = Todo.objects.filter(complete=True)
-    return render(request, 'todo.done_list.html', {'dones':dones})
+    return render(request, 'todo/done_list.html', {'dones':dones})
 
-def todo_doen(request, pk):
-    todo = Todo.pnjects.get(id=pk)
+def todo_done(request, pk):
+    todo = Todo.objects.get(id=pk)
     todo.complete = True
     todo.save()
-    return render('todo_list')
+    return redirect('todo_list')
