@@ -24,7 +24,7 @@ def photo_post(request):
     return render(request, 'photo/photo_post.html', {'form':form})
 
 def photo_edit(request, pk):
-    photo - get_object_or_404(Photo, pk=pk)
+    photo = get_object_or_404(Photo, pk=pk)
     if request.method == "POST":
         form = PhotoForm(request.POST, instance=photo)
         if form.is_valid():
